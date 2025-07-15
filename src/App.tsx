@@ -10,6 +10,7 @@ import Advances from "./pages/Advances";
 import EndOfService from "./pages/EndOfService";
 import Attendance from "./pages/Attendance";
 import Overtime from "./pages/Overtime";
+import Settings from "./pages/Settings";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/end-of-service" element={<EndOfService />} />
           <Route path="/attendance" element={<Attendance />} />
           <Route path="/overtime" element={<Overtime />} />
+          <Route path="/settings" element={<Settings />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
