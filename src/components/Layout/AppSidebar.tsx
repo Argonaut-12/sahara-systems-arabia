@@ -66,6 +66,33 @@ const menuItems = [
   }
 ];
 
+const hrSubItems = [
+  {
+    title: "الإجازات",
+    url: "/leaves",
+    icon: Calendar,
+    badge: "12"
+  },
+  {
+    title: "السلف",
+    url: "/advances",
+    icon: DollarSign,
+    badge: "5"
+  },
+  {
+    title: "مكافآت نهاية الخدمة",
+    url: "/end-of-service",
+    icon: FileText,
+    badge: null
+  },
+  {
+    title: "الساعات الإضافية",
+    url: "/overtime",
+    icon: Clock,
+    badge: "18"
+  }
+];
+
 const reportsItems = [
   {
     title: "التقارير",
@@ -141,6 +168,37 @@ export function AppSidebar() {
           <SidebarGroupContent className="px-2">
             <SidebarMenu>
               {menuItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild className="h-auto p-0">
+                    <NavLink to={item.url} className={getNavClass(item.url)}>
+                      <item.icon className={`${isCollapsed ? "w-5 h-5" : "w-4 h-4"} flex-shrink-0`} />
+                      {!isCollapsed && (
+                        <>
+                          <span className="flex-1">{item.title}</span>
+                          {item.badge && (
+                            <Badge className="text-xs px-2 py-0.5 bg-primary/10 text-primary border-primary/20">
+                              {item.badge}
+                            </Badge>
+                          )}
+                        </>
+                      )}
+                    </NavLink>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        {/* HR Sub-sections */}
+        <SidebarGroup>
+          <SidebarGroupLabel className="text-sidebar-foreground/80 font-semibold px-4 py-2">
+            {!isCollapsed && "أقسام الموارد البشرية"}
+          </SidebarGroupLabel>
+          
+          <SidebarGroupContent className="px-2">
+            <SidebarMenu>
+              {hrSubItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild className="h-auto p-0">
                     <NavLink to={item.url} className={getNavClass(item.url)}>
