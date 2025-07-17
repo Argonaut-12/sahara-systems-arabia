@@ -148,7 +148,7 @@ const Settings = () => {
               <CardTitle className="text-sm font-medium text-muted-foreground">الأقسام</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-secondary">{projectStats.departments}</div>
+              <div className="text-2xl font-bold text-foreground">{projectStats.departments}</div>
             </CardContent>
           </Card>
           
@@ -157,7 +157,7 @@ const Settings = () => {
               <CardTitle className="text-sm font-medium text-muted-foreground">الإجازات النشطة</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-warning">{projectStats.activeLeaves}</div>
+              <div className="text-2xl font-bold text-[hsl(var(--warning))]">{projectStats.activeLeaves}</div>
             </CardContent>
           </Card>
           
@@ -166,7 +166,7 @@ const Settings = () => {
               <CardTitle className="text-sm font-medium text-muted-foreground">السلف المعلقة</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-accent">{projectStats.pendingAdvances}</div>
+              <div className="text-2xl font-bold text-foreground">{projectStats.pendingAdvances}</div>
             </CardContent>
           </Card>
           
@@ -175,7 +175,7 @@ const Settings = () => {
               <CardTitle className="text-sm font-medium text-muted-foreground">وقت التشغيل</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-success">{systemInfo.uptime}</div>
+              <div className="text-2xl font-bold text-[hsl(var(--success))]">{systemInfo.uptime}</div>
             </CardContent>
           </Card>
         </div>

@@ -4,15 +4,18 @@ import { Toaster } from "@/components/ui/toaster";
 import { Bell, User, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
 
 interface MainLayoutProps {
   children: React.ReactNode;
 }
 
 export function MainLayout({ children }: MainLayoutProps) {
+  const navigate = useNavigate();
+
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-background">
+      <div className="min-h-screen w-full bg-background flex">
         <AppSidebar />
         
         <div className="flex-1 flex flex-col">
@@ -38,7 +41,12 @@ export function MainLayout({ children }: MainLayoutProps) {
                   </Badge>
                 </Button>
                 
-                <Button variant="ghost" size="icon" className="hover-lift">
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="hover-lift"
+                  onClick={() => navigate("/settings")}
+                >
                   <Settings className="h-5 w-5" />
                 </Button>
                 
