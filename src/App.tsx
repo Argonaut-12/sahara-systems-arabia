@@ -11,6 +11,13 @@ import EndOfService from "./pages/EndOfService";
 import Attendance from "./pages/Attendance";
 import Overtime from "./pages/Overtime";
 import Settings from "./pages/Settings";
+import Employees from "./pages/Employees";
+import Payroll from "./pages/Payroll";
+import Training from "./pages/Training";
+import Medical from "./pages/Medical";
+import Reports from "./pages/Reports";
+import Calendar from "./pages/Calendar";
+import Tasks from "./pages/Tasks";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +29,13 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/employees" element={<Employees />} />
+          <Route path="/payroll" element={<Payroll />} />
+          <Route path="/training" element={<Training />} />
+          <Route path="/medical" element={<Medical />} />
+          <Route path="/reports" element={<Reports />} />
+          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/tasks" element={<Tasks />} />
           <Route path="/leaves" element={<Leaves />} />
           <Route path="/advances" element={<Advances />} />
           <Route path="/end-of-service" element={<EndOfService />} />
