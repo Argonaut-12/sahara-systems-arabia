@@ -7,6 +7,7 @@ import {
   GraduationCap, 
   Stethoscope,
   FileText,
+  Receipt,
   Settings,
   BarChart3,
   Calendar,
@@ -90,6 +91,12 @@ const hrSubItems = [
     url: "/overtime",
     icon: Clock,
     badge: "18"
+  },
+  {
+    title: "بيان المستحقات",
+    url: "/benefits-statement",
+    icon: Receipt,
+    badge: null
   }
 ];
 

@@ -18,6 +18,7 @@ import Medical from "./pages/Medical";
 import Reports from "./pages/Reports";
 import Calendar from "./pages/Calendar";
 import Tasks from "./pages/Tasks";
+import BenefitsStatement from "./pages/BenefitsStatement";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/end-of-service" element={<EndOfService />} />
           <Route path="/attendance" element={<Attendance />} />
           <Route path="/overtime" element={<Overtime />} />
+          <Route path="/benefits-statement" element={<BenefitsStatement />} />
           <Route path="/settings" element={<Settings />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
