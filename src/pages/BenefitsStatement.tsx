@@ -275,113 +275,173 @@ export default function BenefitsStatement() {
                         </div>
                       </div>
 
-                      {/* تفاصيل البيان */}
-                      {statementType === "leave" && leaveType && leaveDuration && (
-                        <div className="space-y-4">
-                          <h4 className="text-lg font-semibold text-foreground border-b pb-2">تفاصيل الإجازة</h4>
+                      {/* تفاصيل المستحقات - عرض دائماً */}
+                      <div className="space-y-6">
+                        {/* معلومات الراتب والخدمة */}
+                        <div className="bg-primary/5 p-4 rounded-lg">
+                          <h4 className="text-lg font-semibold text-foreground border-b pb-2 mb-4">تفاصيل الراتب والخدمة</h4>
                           <div className="grid grid-cols-2 gap-4">
                             <div>
-                              <span className="font-semibold text-muted-foreground">نوع الإجازة:</span>
-                              <p className="font-medium">
-                                {leaveType === "annual" && "إجازة سنوية"}
-                                {leaveType === "sick" && "إجازة مرضية"}
-                                {leaveType === "emergency" && "إجازة طارئة"}
-                                {leaveType === "maternity" && "إجازة أمومة"}
-                                {leaveType === "unpaid" && "إجازة بدون راتب"}
-                              </p>
+                              <span className="font-semibold text-muted-foreground">الراتب الشهري:</span>
+                              <p className="font-bold text-xl text-primary">{selectedEmp.baseSalary.toLocaleString()} ريال</p>
                             </div>
                             <div>
-                              <span className="font-semibold text-muted-foreground">عدد الأيام:</span>
-                              <p className="font-medium">{leaveDuration} يوم</p>
+                              <span className="font-semibold text-muted-foreground">راتب اليوم الواحد:</span>
+                              <p className="font-bold text-xl text-primary">{(selectedEmp.baseSalary / 30).toFixed(2)} ريال</p>
                             </div>
-                          </div>
-                          
-                          <div className="bg-success-light p-4 rounded-lg">
-                            <h5 className="font-semibold mb-2">المستحقات المالية:</h5>
-                            <div className="space-y-2">
-                              <div className="flex justify-between">
-                                <span>راتب اليوم الواحد:</span>
-                                <span>{(selectedEmp.baseSalary / 30).toFixed(2)} ريال</span>
-                              </div>
-                              <div className="flex justify-between">
-                                <span>عدد الأيام:</span>
-                                <span>{leaveDuration} يوم</span>
-                              </div>
-                              <Separator />
-                              <div className="flex justify-between font-bold text-lg">
-                                <span>إجمالي المستحقات:</span>
-                                <span>{leaveBenefit.toFixed(2)} ريال</span>
-                              </div>
+                            <div>
+                              <span className="font-semibold text-muted-foreground">راتب الساعة:</span>
+                              <p className="font-bold text-xl text-primary">{(selectedEmp.baseSalary / 30 / 8).toFixed(2)} ريال</p>
+                            </div>
+                            <div>
+                              <span className="font-semibold text-muted-foreground">سنوات الخدمة:</span>
+                              <p className="font-bold text-xl text-primary">{serviceYears} سنة</p>
                             </div>
                           </div>
                         </div>
+
+                        {/* معلومات الإجازات */}
+                        <div className="bg-warning/5 p-4 rounded-lg">
+                          <h4 className="text-lg font-semibold text-foreground border-b pb-2 mb-4">رصيد الإجازات</h4>
+                          <div className="grid grid-cols-2 gap-4">
+                            <div>
+                              <span className="font-semibold text-muted-foreground">الإجازة السنوية المستحقة:</span>
+                              <p className="font-bold text-lg text-success">30 يوم</p>
+                            </div>
+                            <div>
+                              <span className="font-semibold text-muted-foreground">المستخدم من الإجازات:</span>
+                              <p className="font-bold text-lg text-destructive">15 يوم</p>
+                            </div>
+                            <div>
+                              <span className="font-semibold text-muted-foreground">الرصيد المتبقي:</span>
+                              <p className="font-bold text-lg text-success">15 يوم</p>
+                            </div>
+                            <div>
+                              <span className="font-semibold text-muted-foreground">قيمة الرصيد المتبقي:</span>
+                              <p className="font-bold text-lg text-success">{((selectedEmp.baseSalary / 30) * 15).toFixed(2)} ريال</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* حساب مكافأة نهاية الخدمة */}
+                        <div className="bg-success/5 p-4 rounded-lg">
+                          <h4 className="text-lg font-semibold text-foreground border-b pb-2 mb-4">مكافأة نهاية الخدمة</h4>
+                          <div className="space-y-3">
+                            <div className="flex justify-between">
+                              <span>سنوات الخدمة:</span>
+                              <span className="font-medium">{serviceYears} سنة</span>
+                            </div>
+                            {serviceYears >= 5 ? (
+                              <>
+                                <div className="flex justify-between">
+                                  <span>الخمس سنوات الأولى (نصف شهر × 5):</span>
+                                  <span className="font-medium">{((selectedEmp.baseSalary / 2) * 5).toLocaleString()} ريال</span>
+                                </div>
+                                <div className="flex justify-between">
+                                  <span>ما بعد الخمس سنوات (شهر × {serviceYears - 5}):</span>
+                                  <span className="font-medium">{(selectedEmp.baseSalary * (serviceYears - 5)).toLocaleString()} ريال</span>
+                                </div>
+                              </>
+                            ) : (
+                              <div className="flex justify-between">
+                                <span>أقل من 5 سنوات (نصف شهر × {serviceYears}):</span>
+                                <span className="font-medium">{endOfServiceBenefit.toLocaleString()} ريال</span>
+                              </div>
+                            )}
+                            <Separator />
+                            <div className="flex justify-between font-bold text-xl text-success">
+                              <span>إجمالي مكافأة نهاية الخدمة:</span>
+                              <span>{endOfServiceBenefit.toLocaleString()} ريال</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* تفاصيل البيان حسب النوع */}
+                      {statementType === "leave" && (
+                        <div className="space-y-4 mt-6">
+                          <h4 className="text-lg font-semibold text-foreground border-b pb-2">تفاصيل الإجازة المطلوبة</h4>
+                          {leaveType && leaveDuration ? (
+                            <>
+                              <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                  <span className="font-semibold text-muted-foreground">نوع الإجازة:</span>
+                                  <p className="font-medium">
+                                    {leaveType === "annual" && "إجازة سنوية"}
+                                    {leaveType === "sick" && "إجازة مرضية"}
+                                    {leaveType === "emergency" && "إجازة طارئة"}
+                                    {leaveType === "maternity" && "إجازة أمومة"}
+                                    {leaveType === "unpaid" && "إجازة بدون راتب"}
+                                  </p>
+                                </div>
+                                <div>
+                                  <span className="font-semibold text-muted-foreground">عدد الأيام:</span>
+                                  <p className="font-medium">{leaveDuration} يوم</p>
+                                </div>
+                              </div>
+                              
+                              <div className="bg-success-light p-4 rounded-lg border border-success/20">
+                                <h5 className="font-semibold mb-3 text-success">حساب المستحقات المالية:</h5>
+                                <div className="space-y-2">
+                                  <div className="flex justify-between">
+                                    <span>راتب اليوم الواحد:</span>
+                                    <span className="font-medium">{(selectedEmp.baseSalary / 30).toFixed(2)} ريال</span>
+                                  </div>
+                                  <div className="flex justify-between">
+                                    <span>عدد الأيام:</span>
+                                    <span className="font-medium">{leaveDuration} يوم</span>
+                                  </div>
+                                  <Separator />
+                                  <div className="flex justify-between font-bold text-xl text-success">
+                                    <span>إجمالي المستحقات:</span>
+                                    <span>{leaveBenefit.toFixed(2)} ريال</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </>
+                          ) : (
+                            <div className="text-center py-6 text-muted-foreground bg-muted/20 rounded-lg">
+                              <FileText className="w-12 h-12 mx-auto mb-2 opacity-50" />
+                              <p>يرجى اختيار نوع الإجازة وعدد الأيام لعرض التفاصيل</p>
+                            </div>
+                          )}
+                        </div>
                       )}
 
-                      {statementType === "end-of-service" && terminationReason && (
-                        <div className="space-y-4">
-                          <h4 className="text-lg font-semibold text-foreground border-b pb-2">تفاصيل نهاية الخدمة</h4>
+                      {statementType === "end-of-service" && (
+                        <div className="space-y-4 mt-6">
+                          <h4 className="text-lg font-semibold text-foreground border-b pb-2">تفاصيل إنهاء الخدمة</h4>
                           
-                          {/* بند الإنهاء */}
-                          <div className="bg-warning-light p-4 rounded-lg">
-                            <h5 className="font-semibold mb-2 flex items-center gap-2">
-                              <AlertCircle className="w-4 h-4" />
-                              بند إنهاء الخدمة:
-                            </h5>
-                            <div className="grid grid-cols-2 gap-4">
-                              <div>
-                                <span className="font-semibold text-muted-foreground">سبب الإنهاء:</span>
-                                <p className="font-medium">
-                                  {terminationReason === "resignation" && "استقالة"}
-                                  {terminationReason === "retirement" && "تقاعد"}
-                                  {terminationReason === "termination" && "إنهاء خدمة"}
-                                  {terminationReason === "contract-end" && "انتهاء العقد"}
-                                </p>
-                              </div>
-                              {terminationDate && (
+                          {terminationReason ? (
+                            <div className="bg-warning-light p-4 rounded-lg border border-warning/20">
+                              <h5 className="font-semibold mb-3 flex items-center gap-2 text-warning">
+                                <AlertCircle className="w-5 h-5" />
+                                بند إنهاء الخدمة:
+                              </h5>
+                              <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                  <span className="font-semibold text-muted-foreground">تاريخ الإنهاء:</span>
-                                  <p className="font-medium">{new Date(terminationDate).toLocaleDateString('ar-SA')}</p>
+                                  <span className="font-semibold text-muted-foreground">سبب الإنهاء:</span>
+                                  <p className="font-medium">
+                                    {terminationReason === "resignation" && "استقالة"}
+                                    {terminationReason === "retirement" && "تقاعد"}
+                                    {terminationReason === "termination" && "إنهاء خدمة"}
+                                    {terminationReason === "contract-end" && "انتهاء العقد"}
+                                  </p>
                                 </div>
-                              )}
-                            </div>
-                          </div>
-
-                          <div className="bg-success-light p-4 rounded-lg">
-                            <h5 className="font-semibold mb-2">حساب مكافأة نهاية الخدمة:</h5>
-                            <div className="space-y-2">
-                              <div className="flex justify-between">
-                                <span>سنوات الخدمة:</span>
-                                <span>{serviceYears} سنة</span>
-                              </div>
-                              <div className="flex justify-between">
-                                <span>الراتب الأساسي:</span>
-                                <span>{selectedEmp.baseSalary.toLocaleString()} ريال</span>
-                              </div>
-                              <Separator />
-                              {serviceYears >= 5 ? (
-                                <>
-                                  <div className="flex justify-between">
-                                    <span>الخمس سنوات الأولى (نصف شهر × 5):</span>
-                                    <span>{((selectedEmp.baseSalary / 2) * 5).toLocaleString()} ريال</span>
+                                {terminationDate && (
+                                  <div>
+                                    <span className="font-semibold text-muted-foreground">تاريخ الإنهاء:</span>
+                                    <p className="font-medium">{new Date(terminationDate).toLocaleDateString('ar-SA')}</p>
                                   </div>
-                                  <div className="flex justify-between">
-                                    <span>ما بعد الخمس سنوات (شهر × {serviceYears - 5}):</span>
-                                    <span>{(selectedEmp.baseSalary * (serviceYears - 5)).toLocaleString()} ريال</span>
-                                  </div>
-                                </>
-                              ) : (
-                                <div className="flex justify-between">
-                                  <span>أقل من 5 سنوات (نصف شهر × {serviceYears}):</span>
-                                  <span>{endOfServiceBenefit.toLocaleString()} ريال</span>
-                                </div>
-                              )}
-                              <Separator />
-                              <div className="flex justify-between font-bold text-lg">
-                                <span>إجمالي مكافأة نهاية الخدمة:</span>
-                                <span>{endOfServiceBenefit.toLocaleString()} ريال</span>
+                                )}
                               </div>
                             </div>
-                          </div>
+                          ) : (
+                            <div className="text-center py-6 text-muted-foreground bg-muted/20 rounded-lg">
+                              <AlertCircle className="w-12 h-12 mx-auto mb-2 opacity-50" />
+                              <p>يرجى اختيار سبب الإنهاء لعرض التفاصيل الكاملة</p>
+                            </div>
+                          )}
                         </div>
                       )}
 
