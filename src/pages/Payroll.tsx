@@ -108,7 +108,7 @@ const Payroll = () => {
                     <Badge variant="default">
                       {payroll.status}
                     </Badge>
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" onClick={() => window.location.href = '/payroll-details'}>
                       عرض التفاصيل
                     </Button>
                   </div>

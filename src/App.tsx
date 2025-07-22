@@ -13,6 +13,7 @@ import Overtime from "./pages/Overtime";
 import Settings from "./pages/Settings";
 import Employees from "./pages/Employees";
 import Payroll from "./pages/Payroll";
+import PayrollDetails from "./pages/PayrollDetails";
 import Training from "./pages/Training";
 import Medical from "./pages/Medical";
 import Reports from "./pages/Reports";
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/employees" element={<Employees />} />
           <Route path="/payroll" element={<Payroll />} />
+          <Route path="/payroll-details" element={<PayrollDetails />} />
           <Route path="/training" element={<Training />} />
           <Route path="/medical" element={<Medical />} />
           <Route path="/reports" element={<Reports />} />
