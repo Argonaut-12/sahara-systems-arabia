@@ -202,7 +202,7 @@ const PayrollDetails = () => {
               <DollarSign className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-green-600">{totalStats.totalEarnings.toLocaleString()} ر.س</div>
+              <div className="text-2xl font-bold text-success">{totalStats.totalEarnings.toLocaleString()} ر.س</div>
               <p className="text-xs text-muted-foreground">قبل الخصومات</p>
             </CardContent>
           </Card>
@@ -213,7 +213,7 @@ const PayrollDetails = () => {
               <TrendingDown className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-red-600">{totalStats.totalDeductions.toLocaleString()} ر.س</div>
+              <div className="text-2xl font-bold text-destructive">{totalStats.totalDeductions.toLocaleString()} ر.س</div>
               <p className="text-xs text-muted-foreground">جميع أنواع الخصومات</p>
             </CardContent>
           </Card>
@@ -224,7 +224,7 @@ const PayrollDetails = () => {
               <DollarSign className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-blue-600">{totalStats.totalNetSalary.toLocaleString()} ر.س</div>
+              <div className="text-2xl font-bold text-primary">{totalStats.totalNetSalary.toLocaleString()} ر.س</div>
               <p className="text-xs text-muted-foreground">المبلغ المدفوع فعلياً</p>
             </CardContent>
           </Card>
@@ -276,18 +276,18 @@ const PayrollDetails = () => {
                             <TableCell>{employee.department}</TableCell>
                             <TableCell>{employee.position}</TableCell>
                             <TableCell>{employee.workingDays}</TableCell>
-                            <TableCell className={employee.absenceDays > 0 ? "text-red-600" : ""}>
+                            <TableCell className={employee.absenceDays > 0 ? "text-destructive" : ""}>
                               {employee.absenceDays}
                             </TableCell>
                             <TableCell>{employee.baseSalary.toLocaleString()} ر.س</TableCell>
                             <TableCell>{totalAllowances.toLocaleString()} ر.س</TableCell>
-                            <TableCell className="font-medium text-green-600">
+                            <TableCell className="font-medium text-success">
                               {employee.totalEarnings.toLocaleString()} ر.س
                             </TableCell>
-                            <TableCell className="font-medium text-red-600">
+                            <TableCell className="font-medium text-destructive">
                               {employee.totalDeductions.toLocaleString()} ر.س
                             </TableCell>
-                            <TableCell className="font-bold text-blue-600">
+                            <TableCell className="font-bold text-primary">
                               {employee.netSalary.toLocaleString()} ر.س
                             </TableCell>
                             <TableCell>
@@ -346,7 +346,7 @@ const PayrollDetails = () => {
                             <TableCell>{employee.mealAllowance.toLocaleString()} ر.س</TableCell>
                             <TableCell>{employee.phoneAllowance.toLocaleString()} ر.س</TableCell>
                             <TableCell>{employee.overtimeAmount.toLocaleString()} ر.س</TableCell>
-                            <TableCell className="font-bold text-green-600">
+                            <TableCell className="font-bold text-success">
                               {totalAllowances.toLocaleString()} ر.س
                             </TableCell>
                           </TableRow>
@@ -384,13 +384,13 @@ const PayrollDetails = () => {
                       {employeeData.map((employee) => (
                         <TableRow key={employee.id}>
                           <TableCell className="font-medium">{employee.name}</TableCell>
-                          <TableCell className="text-red-600">{employee.socialInsurance.toLocaleString()} ر.س</TableCell>
-                          <TableCell className="text-red-600">{employee.incomeTax.toLocaleString()} ر.س</TableCell>
-                          <TableCell className="text-red-600">{employee.loanDeduction.toLocaleString()} ر.س</TableCell>
-                          <TableCell className="text-red-600">{employee.absenceDeduction.toLocaleString()} ر.س</TableCell>
-                          <TableCell className="text-red-600">{employee.lateDeduction.toLocaleString()} ر.س</TableCell>
-                          <TableCell className="text-red-600">{employee.otherDeductions.toLocaleString()} ر.س</TableCell>
-                          <TableCell className="font-bold text-red-600">
+                          <TableCell className="text-destructive">{employee.socialInsurance.toLocaleString()} ر.س</TableCell>
+                          <TableCell className="text-destructive">{employee.incomeTax.toLocaleString()} ر.س</TableCell>
+                          <TableCell className="text-destructive">{employee.loanDeduction.toLocaleString()} ر.س</TableCell>
+                          <TableCell className="text-destructive">{employee.absenceDeduction.toLocaleString()} ر.س</TableCell>
+                          <TableCell className="text-destructive">{employee.lateDeduction.toLocaleString()} ر.س</TableCell>
+                          <TableCell className="text-destructive">{employee.otherDeductions.toLocaleString()} ر.س</TableCell>
+                          <TableCell className="font-bold text-destructive">
                             {employee.totalDeductions.toLocaleString()} ر.س
                           </TableCell>
                         </TableRow>

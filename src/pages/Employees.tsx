@@ -144,11 +144,11 @@ const employeesData = [
 const getStatusBadge = (status: string) => {
   switch (status) {
     case "نشط":
-      return <Badge className="bg-[hsl(var(--success))] text-white">{status}</Badge>;
+      return <Badge className="bg-success text-success-foreground">{status}</Badge>;
     case "إجازة":
       return <Badge variant="secondary">{status}</Badge>;
     case "معلق":
-      return <Badge className="bg-[hsl(var(--warning))] text-white">{status}</Badge>;
+      return <Badge className="bg-warning text-warning-foreground">{status}</Badge>;
     default:
       return <Badge variant="outline">{status}</Badge>;
   }
@@ -157,10 +157,10 @@ const getStatusBadge = (status: string) => {
 const getAdvanceStatusBadge = (status: string) => {
   switch (status) {
     case "مسدد":
-      return <Badge className="bg-[hsl(var(--success))] text-white text-xs">{status}</Badge>;
+      return <Badge className="bg-success text-success-foreground text-xs">{status}</Badge>;
     case "نشط":
     case "معلق":
-      return <Badge className="bg-[hsl(var(--warning))] text-white text-xs">{status}</Badge>;
+      return <Badge className="bg-warning text-warning-foreground text-xs">{status}</Badge>;
     case "مسدد جزئياً":
       return <Badge variant="secondary" className="text-xs">{status}</Badge>;
     default:

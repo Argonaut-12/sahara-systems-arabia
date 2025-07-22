@@ -235,13 +235,13 @@ const Payroll = () => {
                       <TableCell>{employee.position}</TableCell>
                       <TableCell>{employee.baseSalary.toLocaleString()} ر.س</TableCell>
                       <TableCell>{employee.allowances.toLocaleString()} ر.س</TableCell>
-                      <TableCell className="font-medium text-green-600">{employee.totalEarnings.toLocaleString()} ر.س</TableCell>
-                      <TableCell className="text-red-600">{employee.socialInsurance.toLocaleString()} ر.س</TableCell>
-                      <TableCell className="text-red-600">{employee.incomeTax.toLocaleString()} ر.س</TableCell>
-                      <TableCell className="text-red-600">{employee.loans.toLocaleString()} ر.س</TableCell>
-                      <TableCell className="text-red-600">{employee.otherDeductions.toLocaleString()} ر.س</TableCell>
-                      <TableCell className="font-medium text-red-600">{employee.totalDeductions.toLocaleString()} ر.س</TableCell>
-                      <TableCell className="font-bold text-blue-600">{employee.netSalary.toLocaleString()} ر.س</TableCell>
+                      <TableCell className="font-medium text-success">{employee.totalEarnings.toLocaleString()} ر.س</TableCell>
+                      <TableCell className="text-destructive">{employee.socialInsurance.toLocaleString()} ر.س</TableCell>
+                      <TableCell className="text-destructive">{employee.incomeTax.toLocaleString()} ر.س</TableCell>
+                      <TableCell className="text-destructive">{employee.loans.toLocaleString()} ر.س</TableCell>
+                      <TableCell className="text-destructive">{employee.otherDeductions.toLocaleString()} ر.س</TableCell>
+                      <TableCell className="font-medium text-destructive">{employee.totalDeductions.toLocaleString()} ر.س</TableCell>
+                      <TableCell className="font-bold text-primary">{employee.netSalary.toLocaleString()} ر.س</TableCell>
                       <TableCell>
                         <Badge variant={employee.status === "مدفوع" ? "default" : "destructive"}>
                           {employee.status}
@@ -261,23 +261,23 @@ const Payroll = () => {
             <div className="mt-6 p-4 bg-muted/50 rounded-lg">
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-sm">
                 <div className="text-center">
-                  <div className="font-semibold text-green-600">إجمالي الاستحقاق</div>
+                  <div className="font-semibold text-success">إجمالي الاستحقاق</div>
                   <div className="text-lg font-bold">62,300 ر.س</div>
                 </div>
                 <div className="text-center">
-                  <div className="font-semibold text-red-600">التأمينات</div>
+                  <div className="font-semibold text-destructive">التأمينات</div>
                   <div className="text-lg font-bold">4,672 ر.س</div>
                 </div>
                 <div className="text-center">
-                  <div className="font-semibold text-red-600">الضرائب</div>
+                  <div className="font-semibold text-destructive">الضرائب</div>
                   <div className="text-lg font-bold">3,115 ر.س</div>
                 </div>
                 <div className="text-center">
-                  <div className="font-semibold text-red-600">إجمالي الخصومات</div>
+                  <div className="font-semibold text-destructive">إجمالي الخصومات</div>
                   <div className="text-lg font-bold">10,562 ر.س</div>
                 </div>
                 <div className="text-center">
-                  <div className="font-semibold text-blue-600">صافي الإجمالي</div>
+                  <div className="font-semibold text-primary">صافي الإجمالي</div>
                   <div className="text-lg font-bold">51,738 ر.س</div>
                 </div>
               </div>

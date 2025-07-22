@@ -64,11 +64,11 @@ const EndOfService = () => {
   const getTypeBadge = (type: string) => {
     switch (type) {
       case "استقالة":
-        return <Badge variant="outline" className="border-blue-200 text-blue-600">استقالة</Badge>;
+        return <Badge variant="outline" className="border-primary/20 text-primary">استقالة</Badge>;
       case "تقاعد":
-        return <Badge variant="outline" className="border-green-200 text-green-600">تقاعد</Badge>;
+        return <Badge variant="outline" className="border-success/20 text-success">تقاعد</Badge>;
       case "إنهاء خدمة":
-        return <Badge variant="outline" className="border-red-200 text-red-600">إنهاء خدمة</Badge>;
+        return <Badge variant="outline" className="border-destructive/20 text-destructive">إنهاء خدمة</Badge>;
       default:
         return <Badge variant="outline">{type}</Badge>;
     }
