@@ -12,7 +12,8 @@ import {
   BarChart3,
   Calendar,
   UserCheck,
-  Briefcase
+  Briefcase,
+  AlertTriangle
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
@@ -97,6 +98,12 @@ const hrSubItems = [
     url: "/benefits-statement",
     icon: Receipt,
     badge: null
+  },
+  {
+    title: "حساب التأخيرات",
+    url: "/employee-delays",
+    icon: AlertTriangle,
+    badge: "3"
   }
 ];
 

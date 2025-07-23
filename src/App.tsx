@@ -20,6 +20,7 @@ import Reports from "./pages/Reports";
 import Calendar from "./pages/Calendar";
 import Tasks from "./pages/Tasks";
 import BenefitsStatement from "./pages/BenefitsStatement";
+import EmployeeDelays from "./pages/EmployeeDelays";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +46,7 @@ const App = () => (
           <Route path="/attendance" element={<Attendance />} />
           <Route path="/overtime" element={<Overtime />} />
           <Route path="/benefits-statement" element={<BenefitsStatement />} />
+          <Route path="/employee-delays" element={<EmployeeDelays />} />
           <Route path="/settings" element={<Settings />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
